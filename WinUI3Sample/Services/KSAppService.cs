@@ -266,7 +266,7 @@ public class KSAppService
     /// <summary>
     /// 设置窗口亚克力效果
     /// </summary>
-    bool TrySetSystemBackdrop(Window window)
+    public bool TrySetSystemBackdrop(Window window)
     {
         if (Microsoft.UI.Composition.SystemBackdrops.MicaController.IsSupported())
         {

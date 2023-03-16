@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using Microsoft.UI.Xaml;
 using Windows.ApplicationModel;
 using Windows.Storage;
 using Windows.Storage.Pickers;
@@ -19,12 +20,14 @@ public class KSFileService
     public string MyMusicFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyMusic);
     public string MyVideosFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyVideos);
     /// <summary>
-    /// 选择文件夹
+    /// 选择文件夹 window=App.MainWindow
     /// </summary>
     /// <returns></returns>
-    public async Task<StorageFolder> ChooseFolder()
+    public async Task<StorageFolder> ChooseFolder(Window window)
     {
         var folderPicker = new FolderPicker();
+        var hwnd = WinRT.Interop.WindowNative.GetWindowHandle(window);
+        WinRT.Interop.InitializeWithWindow.Initialize(folderPicker, hwnd);
         folderPicker.SuggestedStartLocation = PickerLocationId.Desktop;
         folderPicker.FileTypeFilter.Add("*");
         StorageFolder folder = await folderPicker.PickSingleFolderAsync();
@@ -36,11 +39,13 @@ public class KSFileService
     /// <param name="pid"></param>
     /// <param name="filetypes"></param>
     /// <returns></returns>
-    public async Task<StorageFile> ChooseFile(PickerLocationId pid, string[] filetypes)
+    public async Task<StorageFile> ChooseFile(Window window,PickerLocationId pid, string[] filetypes)
     {
         FileOpenPicker openPicker = new FileOpenPicker();
         openPicker.ViewMode = PickerViewMode.List;
         openPicker.SuggestedStartLocation = pid;
+        var hwnd = WinRT.Interop.WindowNative.GetWindowHandle(window);
+        WinRT.Interop.InitializeWithWindow.Initialize(openPicker, hwnd);
         foreach (string filetype in filetypes)
         {
             openPicker.FileTypeFilter.Add(filetype);
@@ -55,12 +60,14 @@ public class KSFileService
     /// <param name="types"></param>
     /// <param name="filename"></param>
     /// <param name="txt"></param>
-    async public void SaveFile(string info, List<string> types, string filename, string txt)
+    async public void SaveFile(Window window,string info, List<string> types, string filename, string txt)
     {
         var saveFile = new FileSavePicker();
         saveFile.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
         saveFile.FileTypeChoices.Add(info, types);
         saveFile.SuggestedFileName = filename;
+        var hwnd = WinRT.Interop.WindowNative.GetWindowHandle(window);
+        WinRT.Interop.InitializeWithWindow.Initialize(saveFile, hwnd);
         StorageFile sFile = await saveFile.PickSaveFileAsync();
         if (sFile != null)
         {
