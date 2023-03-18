@@ -6,3 +6,7 @@ KSFileService.cs：文件的操作功能
 KSSqliteService.cs：sqlite数据库读写功能
 
 KSWin32FileService.cs：win32的file集成功能
+
+KSLocalSettingService.cs: App数据存储
+
+KSVoiceSpeakService.cs：语音朗读功能
