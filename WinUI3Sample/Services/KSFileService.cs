@@ -245,5 +245,13 @@ public class KSFileService
         }
         return str;
     }
-   
+    /// <summary>
+    /// path:/Assets/a.mp3
+    /// </summary>
+    /// <param name="name"></param>
+    /// <returns></returns>
+    public async Task<StorageFile> GetFileFromApplicationByPath(string path)
+    {
+        return await Windows.Storage.StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx://" + path));
+    }
 }
