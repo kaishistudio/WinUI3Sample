@@ -20,6 +20,7 @@
                    Width="16"
                    Height="16" />
             <TextBlock x:Name="AppTitleBarText"
+                       Visibility="Visible"
                        VerticalAlignment="Center"
                        TextWrapping="NoWrap"
                        Style="{StaticResource CaptionTextBlockStyle}"

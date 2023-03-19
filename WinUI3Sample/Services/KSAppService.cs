@@ -53,14 +53,14 @@ public class KSAppService
     /// </summary>
     public double ScreenWidth = DisplayArea.Primary.OuterBounds.Width;
     /// <summary>
-    /// 窗口最大化
+    /// 窗口最大化(App.MainWindow)
     /// </summary>
     public void WindowMax(Window window)
     {
         PInvoke.User32.ShowWindow(GetHwnd(window), PInvoke.User32.WindowShowStyle.SW_MAXIMIZE);
     }
     /// <summary>
-    /// 窗口最小化
+    /// 窗口最小化(App.MainWindow)
     /// </summary>
     public void WindowMin(Window window)
     {

@@ -7,6 +7,5 @@
     mc:Ignorable="d">
 
     <Grid x:Name="ContentArea">
-        <Button Click="Button_Click"/>
     </Grid>
 </Page>

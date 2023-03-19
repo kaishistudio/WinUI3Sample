@@ -20,7 +20,7 @@ public class KSFileService
     public string MyMusicFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyMusic);
     public string MyVideosFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyVideos);
     /// <summary>
-    /// 选择文件夹 window=App.MainWindow
+    /// 选择文件夹 await new KSFileService().ChooseFolder(App.MainWindow);
     /// </summary>
     /// <returns></returns>
     public async Task<StorageFolder> ChooseFolder(Window window)
@@ -34,7 +34,7 @@ public class KSFileService
         return folder;
     }
     /// <summary>
-    /// 选择文件
+    /// 选择文件 (App.MainWindow)
     /// </summary>
     /// <param name="pid"></param>
     /// <param name="filetypes"></param>
@@ -54,7 +54,7 @@ public class KSFileService
         return file;
     }
     /// <summary>
-    /// 保存文件
+    /// 保存文件(App.MainWindow)
     /// </summary>
     /// <param name="info"></param>
     /// <param name="types"></param>
