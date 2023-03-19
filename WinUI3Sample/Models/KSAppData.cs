@@ -23,3 +23,4 @@ public class KSAppData : INotifyPropertyChanged
 
     public event PropertyChangedEventHandler? PropertyChanged;
 }
+
